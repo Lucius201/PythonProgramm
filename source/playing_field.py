@@ -1,4 +1,5 @@
 """Das Modul erstellt das 5x5 Spielfeld."""
+
 import random
 
 
@@ -14,7 +15,7 @@ def get_playing_field() -> list:
 
     random.shuffle(playing_field)
     for i in range(5):
-        result.append(playing_field[i * 5: i * 5 + 5])
+        result.append(playing_field[i * 5 : i * 5 + 5])
     return result
 
 
