@@ -1,13 +1,18 @@
 """Dieses Modul bestimmt die Nummern der einzelnen Felder"""
 from source.playing_field import get_playing_field
 
-get_playing_field()
-
 def get_field_numbers() -> list:
     """Diese Funktion bildet das Feld mit Nummern"""
     field = get_playing_field()
     directions = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
     result = []
+    
+    for row in field:
+        print(row)
+        continue
+
+
+
     for direction in directions:
         continue
     print(field)
