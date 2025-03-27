@@ -1,6 +1,12 @@
 """Dieses Modul bestimmt die Nummern der einzelnen Felder"""
 
-from playing_field import get_playing_field
+field = [
+    [1, 1, 1, 0, 1],
+    [0, 1, 0, 1, 1],
+    [1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1],
+    [1, 1, 1, 1, 1],
+]
 
 
 def get_field_numbers(field) -> list:
@@ -38,4 +44,4 @@ def get_field_numbers(field) -> list:
 
 
 if __name__ == "__main__":
-    print(get_field_numbers(get_playing_field()))
+    print(get_field_numbers(field))

@@ -1,3 +1,5 @@
 /.DS_Store
 /.idea
 testfile.py
+/source/__pycache__
+/tests/__pycache__
