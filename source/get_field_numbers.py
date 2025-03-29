@@ -1,17 +1,19 @@
 """Dieses Modul bestimmt die Nummern der einzelnen Felder"""
 
-field = [
-    [1, 1, 1, 0, 1],
-    [0, 1, 0, 1, 1],
-    [1, 0, 1, 1, 1],
-    [1, 1, 1, 0, 1],
-    [1, 1, 1, 1, 1],
-]
+# from print_field_as_table import print_field_as_table
+
+# field = [
+#     [1, 1, 1, 0, 1],
+#     [0, 1, 0, 1, 1],
+#     [1, 0, 1, 1, 1],
+#     [1, 1, 1, 0, 1],
+#     [1, 1, 1, 1, 1],
+# ]
 
 
 def get_field_numbers(field) -> list:
     """Diese Funktion bildet das Feld mit Nummern"""
-    print(field)
+    # print(field)
     directions = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
     result = []
     current_row = 0
@@ -43,5 +45,7 @@ def get_field_numbers(field) -> list:
     return result
 
 
-if __name__ == "__main__":
-    print(get_field_numbers(field))
+# if __name__ == "__main__":
+#     print_field_as_table(field)
+#     print(" ")
+#     print_field_as_table(get_field_numbers(field))

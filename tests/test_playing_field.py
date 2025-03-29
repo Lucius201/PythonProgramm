@@ -1,7 +1,7 @@
 # pylint: disable=C
 import unittest
 from collections import Counter
-from source.playing_field import get_playing_field
+from source.get_playing_field import get_playing_field
 
 
 class TestGeneratePlayingField(unittest.TestCase):
