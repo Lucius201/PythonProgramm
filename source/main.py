@@ -35,16 +35,16 @@ def main():
         chosen_cell = input().lower()
         row_numbers = [int(c) for c in list(chosen_cell) if c.isdigit()]
         column_chars = [c for c in list(chosen_cell) if not c.isdigit()]
-        # print(column_chars, row_numbers)
+
         try:
             chosen_row = allowed_numbers[row_numbers[0]]
             chosen_column = allowed_characters[column_chars[0]]
-            # print(chosen_column, chosen_row)
-            # print_field_as_table(numbers_field)
-            # print(numbers_field[chosen_row][chosen_column])
+
             if numbers_field[chosen_row][chosen_column] == 9:
+
                 print("Verloren!")
                 print_field_as_table(playing_field)
+
                 playing_field = get_playing_field()
                 numbers_field = get_field_numbers(playing_field)
                 shown_field = [
@@ -54,6 +54,7 @@ def main():
                     ["x", "x", "x", "x", "x"],
                     ["x", "x", "x", "x", "x"],
                 ]
+
             else:
                 shown_field[chosen_row][chosen_column] = str(
                     numbers_field[chosen_row][chosen_column]
