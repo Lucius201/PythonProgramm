@@ -14,20 +14,17 @@
 #     ["b", "b", "b", "b", "b"],
 #     ["b", "b", "b", "b", "b"],
 # ]
+from typing import List
 
 
-def win_condition(shown_field) -> bool:
+def win_condition(shown_field: List[List[str]]) -> bool:
     """Wenn nur noch 5 unaufdeckte Felder -> Spiel gewonnen"""
     x_count = 0
     for row in shown_field:
         for cell in row:
             if cell == "x":
                 x_count = x_count + 1
-
-    if x_count <= 5:
-        return True
-    else:
-        return False
+    return x_count <= 5
 
 
 # if __name__ == "__main__":

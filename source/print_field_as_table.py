@@ -8,13 +8,15 @@
 #     [1, 1, 1, 1, 1],
 # ]
 
+from typing import List, Any
 
-def print_field_as_table(field):
+
+def print_field_as_table(field: List[List[int]]) -> None:
     """Nimmt Spielffeld als Liste als Input und printet Spielfeld"""
     print("   A B C D E\n")
 
     for i, row in enumerate(field):
-        if type(row[0]) is int:
+        if isinstance(row[0], int):
             print_row = map(str, row)
         else:
             print_row = row
