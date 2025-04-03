@@ -1,3 +1,4 @@
+# pylint: disable=C
 import unittest
 from source.get_playing_field import (
     get_playing_field,

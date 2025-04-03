@@ -1,3 +1,4 @@
+# pylint: disable=C
 import unittest
 from unittest.mock import patch
 from source.main import main
@@ -17,7 +18,7 @@ class TestMainFunction(unittest.TestCase):
     @patch(
         "source.get_playing_field.get_playing_field",
         return_value=[
-            [0, 1, 9, 2, 1],  # 9 represents a mine
+            [0, 1, 9, 2, 1],
             [0, 1, 1, 3, 9],
             [0, 0, 0, 3, 9],
             [0, 1, 1, 3, 9],
@@ -52,19 +53,19 @@ class TestMainFunction(unittest.TestCase):
     )
     @patch("builtins.print")
     def test_main_win_condition(self, mock_print, mock_input, mock_field):
-        """Testet ein Gewinnen Durchlauf"""
+        """Testet ein Gewinnen Durchlauf (print von "Gewonnen")"""
         try:
             main()
         except SystemExit:
             self.fail("main() exited unexpectedly")
 
         printed_output = "".join(str(call) for call in mock_print.call_args_list)
-        self.assertIn("Gewonnen", printed_output)  # Check if the win message appears
+        self.assertIn("Gewonnen", printed_output)
 
     @patch(
         "source.get_playing_field.get_playing_field",
         return_value=[
-            [0, 1, 9, 2, 1],  # 9 represents a mine
+            [0, 1, 9, 2, 1],
             [0, 1, 1, 3, 9],
             [0, 0, 0, 3, 9],
             [0, 1, 1, 3, 9],
@@ -74,7 +75,7 @@ class TestMainFunction(unittest.TestCase):
     @patch("builtins.input", side_effect=["c1", "n"])
     @patch("builtins.print")
     def test_main_lose_condition(self, mock_print, mock_input, mock_field):
-        """Test, dass das Game mit Verloren exitet wenn die Bombe gescannt wird"""
+        """Test, dass das Game "Verloren" printet wenn die Bombe gescannt wird"""
         try:
             main()
         except SystemExit:

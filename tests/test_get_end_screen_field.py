@@ -1,3 +1,4 @@
+# pylint: disable=C
 import unittest
 from get_end_screen_field import get_end_screen_field
 

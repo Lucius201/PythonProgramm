@@ -1,3 +1,4 @@
+# pylint: disable=C
 import unittest
 from source.win_condition import win_condition
 

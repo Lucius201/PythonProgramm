@@ -50,6 +50,7 @@ def main() -> None:
             column_chars = [c for c in list(chosen_cell) if not c.isdigit()]
 
             if not chosen_cell:
+                error_message = "Bitte eine Koordinate eingeben. z.B: (a1, c2, e4, d1)"
                 continue
 
             if column_chars[0] == "q":
@@ -85,13 +86,22 @@ def main() -> None:
             print("\n" * 15)
             print_field_as_table(shown_field)
             print("Gewonnen!\n")
+            playing_field = get_playing_field()
+            shown_field = [
+                ["x", "x", "x", "x", "x"],
+                ["x", "x", "x", "x", "x"],
+                ["x", "x", "x", "x", "x"],
+                ["x", "x", "x", "x", "x"],
+                ["x", "x", "x", "x", "x"],
+            ]
 
         end_screen_input = input("Nochmal spielen? (y/n)\n").lower()
 
+        if end_screen_input == "y":
+            continue
+
         if end_screen_input in ("n", "q"):
             break
-
-        continue
 
 
 if __name__ == "__main__":
