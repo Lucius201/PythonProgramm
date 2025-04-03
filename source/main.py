@@ -3,20 +3,11 @@
 
 def main() -> None:
     """main funktion des Spiels"""
-
     from get_playing_field import get_playing_field
     from print_field_as_table import print_field_as_table
     from win_condition import win_condition
     from get_end_screen_field import get_end_screen_field
 
-    # playing_field = get_playing_field()
-    playing_field = [
-        [0, 1, 9, 2, 1],
-        [0, 1, 1, 3, 9],
-        [0, 0, 0, 3, 9],
-        [0, 1, 1, 3, 9],
-        [0, 1, 9, 2, 1],
-    ]
     allowed_characters = {
         "a": 0,
         "b": 1,
@@ -36,7 +27,34 @@ def main() -> None:
     print("Willkommen in SweeperMine. Deine Aufgabe ist es Felder aufzudecken.")
     print("Decke Felder auf indem du die Koordinaten angibst: (A1, C5, ...)\n")
     while True:
-        while not win_condition(shown_field):
+        bomb_count = 6
+        difficulty = input(
+            "Welche Schwierigkeit wählen Sie? (e: einfach, n: normal, s: schwer)\n"
+        ).lower()
+
+        match difficulty:
+            case "e":
+                print("Schwierigkeit: einfach\n")
+                bomb_count = 4
+            case "n":
+                print("Schwierigkeit: normal\n")
+                bomb_count = 6
+            case "s":
+                print("Schwierigkeit: schwer\n")
+                bomb_count = 10
+            case _:
+                print("Ungültige Angabe. Schwierigkeit auf 'normal' gesetzt.\n")
+
+        playing_field = get_playing_field(bomb_count)
+        playing_field = [
+            [0, 1, 9, 2, 1],
+            [0, 1, 1, 3, 9],
+            [0, 0, 0, 3, 9],
+            [0, 1, 1, 4, 9],
+            [0, 1, 9, 3, 9],
+        ]
+
+        while not win_condition(shown_field, bomb_count):
             print("\n" * 15)
 
             if error_message:
@@ -65,7 +83,6 @@ def main() -> None:
                     print("Verloren!\n")
                     print_field_as_table(get_end_screen_field(playing_field))
 
-                    playing_field = get_playing_field()
                     shown_field = [
                         ["x", "x", "x", "x", "x"],
                         ["x", "x", "x", "x", "x"],
@@ -82,11 +99,10 @@ def main() -> None:
             except:
                 error_message = "Ungültige Eingabe"
 
-        if win_condition(shown_field):
+        if win_condition(shown_field, bomb_count):
             print("\n" * 15)
             print_field_as_table(shown_field)
             print("Gewonnen!\n")
-            playing_field = get_playing_field()
             shown_field = [
                 ["x", "x", "x", "x", "x"],
                 ["x", "x", "x", "x", "x"],

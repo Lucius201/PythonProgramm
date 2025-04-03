@@ -1,14 +1,6 @@
 """Printet das Spielfeld"""
 
-# field = [
-#     [1, 1, 1, 0, 1],
-#     [0, 1, 0, 1, 1],
-#     [1, 0, 1, 1, 1],
-#     [1, 1, 1, 0, 1],
-#     [1, 1, 1, 1, 1],
-# ]
-
-from typing import List, Any
+from typing import List
 
 
 def print_field_as_table(field: List[List[int]]) -> None:
@@ -24,5 +16,13 @@ def print_field_as_table(field: List[List[int]]) -> None:
     print("")
 
 
-# if __name__ == "__main__":
-#     print_field_as_table(field)
+field = [
+    [1, 1, 1, 0, 1],
+    [0, 1, 0, 1, 1],
+    [1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1],
+    [1, 1, 1, 1, 1],
+]
+
+if __name__ == "__main__":
+    print_field_as_table(field)

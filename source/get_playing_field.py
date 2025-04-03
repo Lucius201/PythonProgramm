@@ -4,14 +4,14 @@ import random
 from typing import List
 
 
-def get_playing_field() -> List[List[int]]:
+def get_playing_field(bomb_count: int) -> List[List[int]]:
     """Generiert ein 5x5 Spielfeld mit eingetragenen Nummern"""
     playing_field_list = []
     binary_playing_field = []
 
-    for i in range(5):
+    for i in range(bomb_count):
         playing_field_list.append(0)
-    for i in range(20):
+    for i in range(25 - bomb_count):
         playing_field_list.append(1)
 
     random.shuffle(playing_field_list)
@@ -50,4 +50,4 @@ def get_playing_field() -> List[List[int]]:
 
 
 if __name__ == "__main__":
-    print(get_playing_field())
+    print(get_playing_field(8))

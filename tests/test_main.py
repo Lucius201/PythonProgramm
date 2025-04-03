@@ -6,7 +6,7 @@ from source.main import main
 
 class TestMainFunction(unittest.TestCase):
 
-    @patch("builtins.input", side_effect=["q", "q"])
+    @patch("builtins.input", side_effect=["s", "q", "q"])
     @patch("builtins.print")
     def test_main_quit_early(self, mock_print, mock_input):
         """Testet ein Exit Vorgang"""
@@ -16,18 +16,23 @@ class TestMainFunction(unittest.TestCase):
             self.fail("main() exited unexpectedly")
 
     @patch(
+        "source.win_condition.win_condition",
+        side_effect=lambda shown_field, bomb_count: bomb_count == 6,
+    )
+    @patch(
         "source.get_playing_field.get_playing_field",
         return_value=[
             [0, 1, 9, 2, 1],
             [0, 1, 1, 3, 9],
             [0, 0, 0, 3, 9],
-            [0, 1, 1, 3, 9],
-            [0, 1, 9, 2, 1],
+            [0, 1, 1, 4, 9],
+            [0, 1, 9, 3, 9],
         ],
     )
     @patch(
         "builtins.input",
         side_effect=[
+            "n",
             "a1",
             "a2",
             "a3",
@@ -47,12 +52,16 @@ class TestMainFunction(unittest.TestCase):
             "d4",
             "d5",
             "e1",
-            "e5",
             "n",
         ],
     )
     @patch("builtins.print")
-    def test_main_win_condition(self, mock_print, mock_input, mock_field):
+    def test_main_win_condition(
+        self, mock_print, mock_input, mock_get_playing_field, mock_win_condition
+    ):
+        print(f"Mocked playing field: {mock_get_playing_field.return_value}")
+        print(f"Mocked win_condition: {mock_win_condition.side_effect}")
+        print(mock_input)
         """Testet ein Gewinnen Durchlauf (print von "Gewonnen")"""
         try:
             main()
@@ -63,18 +72,24 @@ class TestMainFunction(unittest.TestCase):
         self.assertIn("Gewonnen", printed_output)
 
     @patch(
+        "source.win_condition.win_condition",
+        side_effect=lambda shown_field, bomb_count: bomb_count == 6,
+    )
+    @patch(
         "source.get_playing_field.get_playing_field",
         return_value=[
             [0, 1, 9, 2, 1],
             [0, 1, 1, 3, 9],
             [0, 0, 0, 3, 9],
-            [0, 1, 1, 3, 9],
-            [0, 1, 9, 2, 1],
+            [0, 1, 1, 4, 9],
+            [0, 1, 9, 3, 9],
         ],
     )
-    @patch("builtins.input", side_effect=["c1", "n"])
+    @patch("builtins.input", side_effect=["n", "c1", "n"])
     @patch("builtins.print")
-    def test_main_lose_condition(self, mock_print, mock_input, mock_field):
+    def test_main_lose_condition(
+        self, mock_print, mock_input, mock_get_playing_field, mock_win_condition
+    ):
         """Test, dass das Game "Verloren" printet wenn die Bombe gescannt wird"""
         try:
             main()
