@@ -9,7 +9,14 @@ def main() -> None:
     from win_condition import win_condition
     from get_end_screen_field import get_end_screen_field
 
-    playing_field = get_playing_field()
+    # playing_field = get_playing_field()
+    playing_field = [
+        [0, 1, 9, 2, 1],
+        [0, 1, 1, 3, 9],
+        [0, 0, 0, 3, 9],
+        [0, 1, 1, 3, 9],
+        [0, 1, 9, 2, 1],
+    ]
     allowed_characters = {
         "a": 0,
         "b": 1,
@@ -41,6 +48,9 @@ def main() -> None:
             chosen_cell = input().lower()
             row_numbers = [int(c) for c in list(chosen_cell) if c.isdigit()]
             column_chars = [c for c in list(chosen_cell) if not c.isdigit()]
+
+            if not chosen_cell:
+                continue
 
             if column_chars[0] == "q":
                 break
