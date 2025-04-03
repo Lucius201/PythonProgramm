@@ -50,4 +50,4 @@ def get_playing_field(bomb_count: int) -> List[List[int]]:
 
 
 if __name__ == "__main__":
-    print(get_playing_field(8))
+    print(get_playing_field(6))
