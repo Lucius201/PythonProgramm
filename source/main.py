@@ -1,12 +1,13 @@
 """Main Module Des Spiels"""
 
+from get_playing_field import get_playing_field
+from print_field_as_table import print_field_as_table
+from win_condition import win_condition
+from get_end_screen_field import get_end_screen_field
+
 
 def main() -> None:
     """main funktion des Spiels"""
-    from get_playing_field import get_playing_field
-    from print_field_as_table import print_field_as_table
-    from win_condition import win_condition
-    from get_end_screen_field import get_end_screen_field
 
     allowed_characters = {
         "a": 0,
