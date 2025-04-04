@@ -4,7 +4,7 @@ from typing import List
 
 
 def print_field_as_table(field: List[List[int]]) -> None:
-    """Nimmt Spielffeld als Liste als Input und printet Spielfeld"""
+    """Nimmt Spielffeld als Liste als Parameter und printet Spielfeld"""
     print("   A B C D E\n")
 
     for i, row in enumerate(field):

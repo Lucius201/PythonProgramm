@@ -47,13 +47,6 @@ def main() -> None:
                 print("Ungültige Angabe. Schwierigkeit auf 'normal' gesetzt.\n")
 
         playing_field = get_playing_field(bomb_count)
-        playing_field = [
-            [0, 1, 9, 2, 1],
-            [0, 1, 1, 3, 9],
-            [0, 0, 0, 3, 9],
-            [0, 1, 1, 4, 9],
-            [0, 1, 9, 3, 9],
-        ]
 
         while not win_condition(shown_field, bomb_count):
             print("\n" * 15)
@@ -68,12 +61,13 @@ def main() -> None:
             row_numbers = [int(c) for c in list(chosen_cell) if c.isdigit()]
             column_chars = [c for c in list(chosen_cell) if not c.isdigit()]
 
-            if not chosen_cell:
+            if column_chars:
+                if "q" in column_chars:
+                    break
+
+            if not row_numbers or not column_chars:
                 error_message = "Bitte eine Koordinate eingeben. z.B: (a1, c2, e4, d1)"
                 continue
-
-            if column_chars[0] == "q":
-                break
 
             try:
                 chosen_row = allowed_numbers[row_numbers[0]]
