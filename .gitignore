@@ -3,3 +3,6 @@
 testfile.py
 /source/__pycache__
 /tests/__pycache__
+/source/.mypy_cache
+/.venv
+/pyvenv.cfg

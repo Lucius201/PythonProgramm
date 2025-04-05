@@ -1,2 +1,9 @@
-   [MASTER]
+[MASTER]
    init-hook='import sys; sys.path.append("./source")'
+[MESSAGES CONTROL]
+disable=
+   W0702,  # No exception type(s) specified (bare-except)
+   R0915   # Too many statements in a function/method (too-many-statements)
+
+[FORMAT]
+max-statements=60
