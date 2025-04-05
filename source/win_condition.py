@@ -11,22 +11,3 @@ def win_condition(shown_field: List[List[str]], bomb_count: int) -> bool:
             if cell == "x":
                 x_count = x_count + 1
     return x_count <= bomb_count
-
-
-# shown_field_1 = [
-#     ["x", "x", "x", "x", "x"],
-#     ["x", "x", "x", "x", "x"],
-#     ["x", "x", "x", "x", "x"],
-#     ["x", "x", "x", "x", "x"],
-#     ["x", "x", "x", "x", "x"],
-# ]
-# shown_field_2 = [
-#     ["x", "x", "x", "x", "x"],
-#     ["b", "b", "b", "b", "b"],
-#     ["b", "b", "b", "b", "b"],
-#     ["b", "b", "b", "b", "b"],
-#     ["b", "b", "b", "b", "b"],
-# ]
-
-# if __name__ == "__main__":
-#     print(win_condition(shown_field_2))

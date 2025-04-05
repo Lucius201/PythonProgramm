@@ -1,5 +1,6 @@
 """Main Module Des Spiels"""
 
+import sys
 from get_playing_field import get_playing_field
 from print_field_as_table import print_field_as_table
 from win_condition import win_condition
@@ -35,21 +36,25 @@ def main() -> None:
 
         match difficulty:
             case "e":
-                print("Schwierigkeit: einfach\n")
                 bomb_count = 4
+                difficulty = "Einfach"
             case "n":
-                print("Schwierigkeit: normal\n")
                 bomb_count = 6
+                difficulty = "Normal"
             case "s":
-                print("Schwierigkeit: schwer\n")
                 bomb_count = 10
+                difficulty = "Schwer"
             case _:
-                print("Ungültige Angabe. Schwierigkeit auf 'normal' gesetzt.\n")
+                difficulty = "Normal"
 
         playing_field = get_playing_field(bomb_count)
 
         while not win_condition(shown_field, bomb_count):
             print("\n" * 15)
+
+            if difficulty:
+                print("Schwierigkeit: " + difficulty + "\n")
+                difficulty = ""
 
             if error_message:
                 print(error_message + "\n")
@@ -63,6 +68,13 @@ def main() -> None:
 
             if column_chars:
                 if "q" in column_chars:
+                    shown_field = [
+                        ["x", "x", "x", "x", "x"],
+                        ["x", "x", "x", "x", "x"],
+                        ["x", "x", "x", "x", "x"],
+                        ["x", "x", "x", "x", "x"],
+                        ["x", "x", "x", "x", "x"],
+                    ]
                     break
 
             if not row_numbers or not column_chars:
@@ -112,7 +124,7 @@ def main() -> None:
             continue
 
         if end_screen_input in ("n", "q"):
-            break
+            sys.exit(1)
 
 
 if __name__ == "__main__":
