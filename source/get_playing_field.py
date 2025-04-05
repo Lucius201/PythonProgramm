@@ -19,7 +19,7 @@ def get_playing_field(bomb_count: int) -> List[List[int]]:
         binary_playing_field.append(playing_field_list[i * 5 : i * 5 + 5])
 
     directions = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
-    result = []
+    playing_field = []
     current_row = 0
     current_column = 0
 
@@ -43,10 +43,10 @@ def get_playing_field(bomb_count: int) -> List[List[int]]:
                 result_row.append(bomb_count)
 
             current_column += 1
-        result.append(result_row)
+        playing_field.append(result_row)
         current_row += 1
         current_column = 0
-    return result
+    return playing_field
 
 
 if __name__ == "__main__":

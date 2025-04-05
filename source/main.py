@@ -28,6 +28,7 @@ def main() -> None:
     error_message = ""
     print("Willkommen in SweeperMine. Deine Aufgabe ist es Felder aufzudecken.")
     print("Decke Felder auf indem du die Koordinaten angibst: (A1, C5, ...)\n")
+
     while True:
         bomb_count = 6
         difficulty = input(
